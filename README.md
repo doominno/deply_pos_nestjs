@@ -26,7 +26,7 @@ npm install
 ```
 
 ## Variables de entorno
-Crea un archivo `.env` en `backend/` (o usa tu gestor de secretos):
+Crea un archivo `.env` en `backend/`:
 ```env
 DB_HOST=localhost
 DB_PORT=5432
