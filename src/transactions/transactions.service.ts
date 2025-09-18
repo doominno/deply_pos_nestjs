@@ -18,8 +18,6 @@ export class TransactionsService {
     private readonly couponService: CouponsService
 
   ){}
-
-
   async create(createTransactionDto: CreateTransactionDto) {
 
     await this.productRepository.manager.transaction(async (transactionEntityManager) => {
@@ -63,11 +61,13 @@ export class TransactionsService {
         await transactionEntityManager.save(transactionContent)
       }
       
-      return "Venta almacenada correctamente";
+      return {message: "Venta Almacenada Correctamente"}
     });
   }
 
-  findAll(transactionDate?: string) {
+  async findAll(transactionDate?: string) {
+    console.log('Buscando transacciones para fecha:', transactionDate)
+    
     const options : FindManyOptions <Transaction> = {
         relations: {
           contents: true

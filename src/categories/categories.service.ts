@@ -20,16 +20,20 @@ export class CategoriesService {
   }
 
   async findOne(id: number, products?: string) {
-
     const options : FindManyOptions<Category> = {
       where: {
         id
-      }
+      },
     }
 
     if(products === "true") {
       options.relations = {
         products: true
+      },
+      options.order = {
+        products: {
+          id: 'DESC'
+        }
       }
     }
 
